@@ -1,0 +1,33 @@
+<style>
+    .list-group-item {        
+        padding: 0.35rem 1.25rem;
+        text-transform: capitalize;
+    }
+    .page-link { cursor: pointer;}
+    .page-item.disabled .page-link,
+    .page-item .page-link {
+        background-color: transparent;
+        border-color: transparent;
+    }
+</style>
+<div class="container" role="list">
+    <ul class="list-group">
+      <li *ngFor="let p of pokemons" class="list-group-item">{{p.id}} {{p.name}}</li>
+    </ul>
+
+    <nav aria-label="Page navigation">
+        <ul class="pagination mt-2">
+          <li class="page-item" [class.disabled]="previous == null">
+            <a class="page-link" (click)="listar(offset-1)" tabindex="-1" aria-disabled="true">
+                <img height="30" src="assets/images/backspace.svg">
+            </a>
+          </li>          
+          <li class="page-item" [class.disabled]="next == null">
+            <a class="page-link" (click)="listar(offset+1)">
+                <img height="30" src="assets/images/backspace-reverse.svg">
+              </a>
+          </li>
+        </ul>
+      </nav>
+
+</div>
