@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { PokemonService} from '../pokemon.service';
-import { Pokemons } from '../models/pokemon.model';
+import { PokemonService } from '../pokemon.service';
+import { FavoritoService } from '../favorito.service';
+
 @Component({
   selector: 'app-pokemon-listagem',
   templateUrl: './pokemon-listagem.component.html',
@@ -13,7 +14,7 @@ export class PokemonListagemComponent implements OnInit {
   previous: any;
   next: any;
 
-  constructor(private PokemonService: PokemonService) { }
+  constructor(private PokemonService: PokemonService, private FavoritoService: FavoritoService) { }
 
   ngOnInit(): void {
     this.listar();
@@ -26,5 +27,16 @@ export class PokemonListagemComponent implements OnInit {
       this.previous = dados.previous;
       this.next = dados.next;
     });
+  }
+
+  favoritar(item:any) {
+    this.FavoritoService.setData(item);
+  }
+
+  isFavorito(name:String) {
+    if (this.FavoritoService.getData(name))
+      return 'assets/images/star-fill.svg'
+    else
+      return 'assets/images/star.svg'
   }
 }

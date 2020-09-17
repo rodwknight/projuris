@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { PokemonService } from './pokemon.service';
+import { FavoritoService } from './favorito.service';
 import { PokemonListagemComponent } from './pokemon-listagem/pokemon-listagem.component'
 
 
@@ -20,7 +21,7 @@ import { PokemonListagemComponent } from './pokemon-listagem/pokemon-listagem.co
     RouterModule,
     HttpClientModule
   ],
-  providers: [ PokemonService],
+  providers: [PokemonService, FavoritoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
